@@ -1,0 +1,13 @@
+<div *ngIf="loading">Chargement des posts...</div>
+
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="!loading && !error">
+  <h1>Posts</h1>
+
+
+  <div class="col-12">
+    <!-- Pass posts data to the app-blog-card component -->
+    <app-blog-card [posts]="posts"></app-blog-card>
+  </div>
+</div>

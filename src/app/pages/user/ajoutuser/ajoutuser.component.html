@@ -1,0 +1,33 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">User Form</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+      <div class="row">
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Username</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput formControlName="username" placeholder="Your username" />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Email</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput type="email" formControlName="email" placeholder="Your email" />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Password</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput type="password" formControlName="password" placeholder="Your password" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="m-t-12">
+        <button mat-flat-button color="primary" class="m-r-8" type="submit" [disabled]="userForm.invalid">Submit</button>
+        <button mat-stroked-button color="warn" type="reset">Cancel</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
