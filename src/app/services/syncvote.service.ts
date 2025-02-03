@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
 })
 export class SyncvoteService {
 
-  private baseUrl = 'http://localhost:8081';
+  private baseUrl = 'http://localhost:3030';
 
   constructor(private http: HttpClient) { }
 
@@ -18,10 +18,13 @@ export class SyncvoteService {
   }
 
   addPost(postData: any, token: string): Observable<any> {
+    console.log(token) ; 
+    console.log(postData) ; 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.post<any>(`${this.baseUrl}/posts`, postData);
+    console.log(headers.get('Authorization'));
+    return this.http.post<any>(`${this.baseUrl}/posts`, postData ,{ headers });
   }
 
   getPostById(id: number): Observable<any> {

@@ -63,7 +63,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Ajout Post',
     iconName: 'solar:archive-minimalistic-line-duotone',
-    route: '/user/ajoutuser',
+    route: '/posts/ajoutpost',
   },
   /* {
     navCap: 'Extra',

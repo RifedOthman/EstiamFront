@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../../services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-side-login',
@@ -34,17 +35,25 @@ export class AppSideLoginComponent {
   password = '';
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private TokenService: TokenService, private router: Router) {}
 
   login(): void {
     this.authService.login({ email: this.email, password: this.password }).subscribe({
       next: (response) => {
-        localStorage.setItem('token', response.token);
+        const token = response.data.token;
+
+        console.log(response); 
+        // On suppose que le token est dans la réponse sous la forme response.token
+        this.TokenService.setToken(response.data.token);  // Enregistrer le token dans localStorage 
+        // Ensuite, on redirige vers la page des posts
         this.router.navigate(['/posts']);
       },
       error: (error) => {
+        // Si l'authentification échoue, on affiche un message d'erreur
         this.errorMessage = error.error.message || 'Login failed';
       },
     });
   }
+
+  
 }
