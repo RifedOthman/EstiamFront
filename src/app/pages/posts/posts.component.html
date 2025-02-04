@@ -3,12 +3,37 @@
 <div *ngIf="error" class="error">{{ error }}</div>
 
 <div *ngIf="!loading && !error">
-  <h1>Posts</h1>
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1>Posts</h1>
 
+    <div style="display: flex; align-items: center;">
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <input 
+            matInput 
+            type="search" 
+            placeholder="Search posts" 
+            [(ngModel)]="searchQuery" 
+            (input)="filterPosts()" 
+          >
+          <button matSuffix mat-icon-button aria-label="Search" (click)="filterPosts()">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-card-content>
+    </div>
+  </div>
 
   <div class="col-12">
-    <!-- Pass posts data to the app-blog-card component -->
-    <app-blog-card [posts]="posts"></app-blog-card>
-    
+    <!-- Display filtered posts -->
+    <app-blog-card [posts]="filteredPosts"></app-blog-card>
   </div>
+
+
+  <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+
 </div>

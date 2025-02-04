@@ -6,18 +6,7 @@ import { Router } from '@angular/router';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { SyncvoteService } from 'src/app/services/syncvote.service';
 import { TokenService } from 'src/app/services/token.service';
-
-interface cardimgs {
-  id: number;
-  time: string;
-  imgSrc: string;
-  user: string;
-  title: string;
-  views: string;
-  category: string;
-  comments: number;
-  date: string;
-}
+import { CommonModule } from '@angular/common';  // Import CommonModule
 
 interface Post {
   id: number;
@@ -34,7 +23,7 @@ interface Post {
 @Component({
   selector: 'app-blog-card',
   standalone: true,
-  imports: [MatCardModule, MatChipsModule, TablerIconsModule, MatButtonModule],
+  imports: [MatCardModule, MatChipsModule, TablerIconsModule, MatButtonModule, CommonModule], // Add CommonModule here
   templateUrl: './blog-card.component.html',
 })
 export class AppBlogCardsComponent {
@@ -43,8 +32,8 @@ export class AppBlogCardsComponent {
 
   constructor(
     private syncvoteService: SyncvoteService,  
-    private tokenService: TokenService   ,
-    private router : Router      
+    private tokenService: TokenService,
+    private router: Router      
   ) {}
 
   ngOnInit(): void {
@@ -56,13 +45,10 @@ export class AppBlogCardsComponent {
     }));
   }
 
-
   onUpdate(cardimg: Post): void {
     console.log('Navigating to update page for post id:', cardimg.id);
     this.router.navigate(['/posts/updatepost'], { queryParams: { id: cardimg.id } });
   }
-
-
 
   onDelete(cardimg: Post): void {
     const token = this.tokenService.getToken(); // Get the token from TokenService
@@ -91,7 +77,6 @@ export class AppBlogCardsComponent {
         }
       },
       (error) => {
-        // Handle error (e.g., show a message to the user)
         console.error('Error deleting post:', error);
       }
     );
