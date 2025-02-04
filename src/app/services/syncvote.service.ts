@@ -27,17 +27,22 @@ export class SyncvoteService {
     return this.http.post<any>(`${this.baseUrl}/posts`, postData ,{ headers });
   }
 
-  getPostById(id: number): Observable<any> {
+  getPostById(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/posts/${id}`);
   }
 
-  updatePost(id: number, postData: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/posts/${id}`, postData);
+  updatePost(id: string, postData: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/posts/${id}`,postData);
   }
 
-  deletePost(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/posts/${id}`);
+  deletePost(id: number, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    return this.http.delete<any>(`${this.baseUrl}/posts/${id}`, { headers });
   }
+
 
   getAllPostsByUser(userId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/users/${userId}/posts`);

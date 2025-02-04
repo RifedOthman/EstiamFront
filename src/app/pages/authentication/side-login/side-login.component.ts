@@ -42,14 +42,10 @@ export class AppSideLoginComponent {
       next: (response) => {
         const token = response.data.token;
 
-        console.log(response); 
-        // On suppose que le token est dans la réponse sous la forme response.token
-        this.TokenService.setToken(response.data.token);  // Enregistrer le token dans localStorage 
-        // Ensuite, on redirige vers la page des posts
+        this.TokenService.setToken(response.data.token);  
         this.router.navigate(['/posts']);
       },
       error: (error) => {
-        // Si l'authentification échoue, on affiche un message d'erreur
         this.errorMessage = error.error.message || 'Login failed';
       },
     });

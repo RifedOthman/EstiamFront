@@ -34,14 +34,15 @@
         }}</a></mat-card-title>
         <div class="d-flex align-items-center justify-content-center m-t-24">
           <div class="d-flex align-items-center">
-            <span class="m-r-12 f-s-14 d-flex align-items-center"
-              ><i-tabler name="eye" class="icon-18 m-r-4"></i-tabler
-              >{{ cardimg.views }}</span
-            >
-            <span class="f-s-14 d-flex align-items-center"
-              ><i-tabler name="message-2" class="icon-18 m-r-4"></i-tabler
-              >{{ cardimg.comments }}</span
-            >
+            <span (click)="onDelete(cardimg)" class="cursor-pointer">
+              <i-tabler name="eye" class="icon-18 m-r-4"></i-tabler>
+              Delete
+            </span>
+
+            <span (click)="onUpdate(cardimg)" class="cursor-pointer"
+              ><i-tabler name="message-2" class="icon-18 m-r-4"></i-tabler>
+              update 
+              </span>
           </div>
           <span class="m-l-auto f-s-14 d-flex align-items-center">
             <i-tabler name="point" class="icon-14 m-r-4 d-flex"></i-tabler>
