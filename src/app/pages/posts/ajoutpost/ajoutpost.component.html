@@ -20,7 +20,12 @@
         <div class="col-lg-12">
           <mat-label class="f-w-600 m-b-8 d-block">Categories</mat-label>
           <mat-form-field appearance="outline" class="w-100" color="primary">
-            <input matInput formControlName="categories" placeholder="Enter category" />
+            <mat-select formControlName="categories" placeholder="Select category">
+              <mat-option value="sports">Sports</mat-option>
+              <mat-option value="movies">Movies</mat-option>
+              <mat-option value="health">Health</mat-option>
+              <mat-option value="food">Food</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';  // Import MatSelectModule
 
 @Component({
   selector: 'app-ajoutpost',
@@ -19,33 +20,39 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    MatSelectModule,  // Add MatSelectModule
   ],
   templateUrl: './ajoutpost.component.html',
 })
 export class AjoutPostComponent {
   postForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private syncvoteService: SyncvoteService, private tokenService: TokenService) {
+  constructor(
+    private fb: FormBuilder,
+    private syncvoteService: SyncvoteService,
+    private tokenService: TokenService
+  ) {
     this.postForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      categories: ['', Validators.required], 
+      categories: ['', Validators.required], // Correctly manage categories
     });
   }
 
   submitForm() {
     if (this.postForm.valid) {
       const userId = this.tokenService.getUserId();
-      console.log("user id :",userId)
+      console.log("User ID:", userId);
+
       const postData = {
         ...this.postForm.value,
         categories: Array.isArray(this.postForm.value.categories)
           ? this.postForm.value.categories
-          : [this.postForm.value.categories],
+          : [this.postForm.value.categories],  // Ensure categories is an array
         createdAt: new Date(),
         createdBy: userId,
       };
-  
+
       const token = this.tokenService.getToken();
       if (token) {
         console.log(token);
@@ -60,8 +67,9 @@ export class AjoutPostComponent {
       } else {
         console.error('No token found');
       }
-      console.log(postData)
+      console.log(postData);
+    } else {
+      console.error('Form is invalid');
     }
   }
-  
 }

@@ -31,7 +31,7 @@ export class SyncvoteService {
     return this.http.get<any>(`${this.baseUrl}/posts/${id}`);
   }
 
-  updatePost(id: string, postData: any): Observable<any> {
+  updatePost(id: string, postData: any, token: string): Observable<any> {
     return this.http.put(`${this.baseUrl}/posts/${id}`,postData);
   }
 

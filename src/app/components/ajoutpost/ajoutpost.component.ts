@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SyncvoteService } from 'src/app/services/syncvote.service';
 
 @Component({
