@@ -39,6 +39,7 @@ export class PostsComponent implements OnInit {
   filteredPosts: any[] = [];
   displayedPosts: any[] = [];
   searchQuery: string = '';
+  selectedCategory: string = '';  // Category filter
 
   loading: boolean = true;
   error: string = '';
@@ -59,9 +60,7 @@ export class PostsComponent implements OnInit {
       next: (data) => {
         this.posts = data.data || [];  
         this.filteredPosts = [...this.posts];  
-
         this.updateDisplayedPosts();
-
         this.loading = false;
       },
       error: () => {
@@ -72,11 +71,14 @@ export class PostsComponent implements OnInit {
   }
 
   filterPosts(): void {
-    this.filteredPosts = this.posts.filter(post =>
-      post.title?.toLowerCase().trim().includes(this.searchQuery.toLowerCase().trim())
-    );
+    // Filter by title and category
+    this.filteredPosts = this.posts.filter(post => {
+      const matchesTitle = post.title?.toLowerCase().trim().includes(this.searchQuery.toLowerCase().trim());
+      const matchesCategory = this.selectedCategory ? post.categories?.includes(this.selectedCategory) : true;
+      return matchesTitle && matchesCategory;
+    });
 
-    this.pageIndex = 0; 
+    this.pageIndex = 0;  // Reset to the first page when filters change
     this.updateDisplayedPosts();
   }
 
@@ -88,7 +90,6 @@ export class PostsComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent): void {
-    console.log("Page change event:", event);
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.updateDisplayedPosts();

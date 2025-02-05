@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';  // Import MatSelectModule
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajoutpost',
@@ -30,7 +31,8 @@ export class AjoutPostComponent {
   constructor(
     private fb: FormBuilder,
     private syncvoteService: SyncvoteService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router
   ) {
     this.postForm = this.fb.group({
       title: ['', Validators.required],
@@ -71,5 +73,6 @@ export class AjoutPostComponent {
     } else {
       console.error('Form is invalid');
     }
+    this.router.navigate(['/posts']);
   }
 }
