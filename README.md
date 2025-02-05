@@ -46,15 +46,13 @@ L'application inclut les optimisations suivantes :
 L'application gère les erreurs globalement grâce à un intercepteur HTTP et des notifications utilisateur. 
  <code>\src\app\interceptors</code> 
 
-## Authentification et Autorisation. 
-<code>\src\app\pages\services\auth.service.ts</code> 
-<code>\src\app\pages\services\token.service.ts</code> 
-
-
 ## Authentification et Autorisation
 
-Admin peut mettre a jour et supprimer tous les posts 
-l'utilisateur peut seulement mettre a jour et supprimer ses posts 
+- <code>\src\app\pages\services\auth.service.ts</code> 
+- <code>\src\app\pages\services\token.service.ts</code> 
+
+- Admin peut mettre a jour et supprimer tous les posts 
+- l'utilisateur peut seulement mettre a jour et supprimer ses posts 
 
 ![alt text](<3.gif>)
 
