@@ -78,7 +78,7 @@ export class PostsComponent implements OnInit {
       return matchesTitle && matchesCategory;
     });
 
-    this.pageIndex = 0;  // Reset to the first page when filters change
+    this.pageIndex = 0;  
     this.updateDisplayedPosts();
   }
 

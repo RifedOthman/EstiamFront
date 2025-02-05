@@ -50,8 +50,25 @@ L'application gère les erreurs globalement grâce à un intercepteur HTTP et de
 <code>\src\app\pages\services\auth.service.ts</code> 
 <code>\src\app\pages\services\token.service.ts</code> 
 
-## Recherche & Filtrage (par categorie)
+
+## Authentification et Autorisation
+
+Admin peut mettre a jour et supprimer tous les posts 
+l'utilisateur peut seulement mettre a jour et supprimer ses posts 
+
+![alt text](<3.gif>)
+
+
+## Recherche & Filtrage (par categorie) 
+<code>\src\app\pages\posts.components.ts</code>
+
 ![alt text](<1.gif>)
+
+
+## Opérations CRUD
+<code>\src\app\pages\posts</code>
+
+![alt text](<4.gif>)
 
 
 
