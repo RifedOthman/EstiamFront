@@ -68,6 +68,12 @@ L'application gère les erreurs globalement grâce à un intercepteur HTTP et de
 
 ![alt text](<4.gif>)
 
+##  Formulaires et validation. 
+
+<code>\src\app\pages\authentication\side-login</code>
+<code>\src\app\pages\authentication\side-register</code>
+<code>\src\app\pages\posts\ajoutpost</code>
+<code>\src\app\pages\posts\updatepost</code>
 
 
 ## Auteur
