@@ -9,36 +9,19 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/posts',
         pathMatch: 'full',
       },
       {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('./pages/pages.routes').then((m) => m.PagesRoutes),
-      },
-      {
-        path: 'ui-components',
-        loadChildren: () =>
-          import('./pages/ui-components/ui-components.routes').then(
-            (m) => m.UiComponentsRoutes
-          ),
-      },
-      {
-        path: 'posts',  // ✅ Lazy loading for posts
+        path: 'posts',  // Lazy loading for posts
         loadChildren: () =>
           import('./pages/posts/posts.routes').then((m) => m.PostsRoutes),
       },
       {
-        path: 'ajoutpost',  // ✅ Lazy loading for posts
+        path: 'ajoutpost',  
         loadChildren: () =>
           import('./pages/user/user.routes').then((m) => m.UserRoutes),
-      },
-      {
-        path: 'extra',
-        loadChildren: () =>
-          import('./pages/extra/extra.routes').then((m) => m.ExtraRoutes),
-      },
+      }
     ],
   },
   {
