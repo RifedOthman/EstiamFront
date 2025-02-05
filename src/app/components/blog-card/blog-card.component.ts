@@ -14,7 +14,7 @@ interface Post {
   user: string;
   imgSrc: string;
   createdAt: string;
-  category: string;
+  categories: string[];
 }
 
 @Component({
@@ -58,8 +58,10 @@ export class AppBlogCardsComponent implements OnInit {
         ...post,
         title: post.title,
         user: '/assets/images/profile/user-1.jpg',
-        imgSrc: '/assets/images/blog/blog-img2.jpg'
+        imgSrc: '/assets/images/blog/blog-img2.jpg',
+        category: post.categories
       }));
+      console.log(this.cardimgs); 
   }
 
   onUpdate(cardimg: Post): void {
