@@ -25,15 +25,14 @@
   </div>
 
   <div class="col-12">
-    <!-- Display filtered posts -->
-    <app-blog-card [posts]="filteredPosts"></app-blog-card>
+    <app-blog-card [posts]="displayedPosts"></app-blog-card>
   </div>
 
-
-  <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-</mat-paginator>
-
+  <mat-paginator 
+    [length]="filteredPosts.length"
+    [pageSize]="6"
+    [pageSizeOptions]="[6, 12, 24]" 
+    (page)="onPageChange($event)"
+    showFirstLastButtons>
+  </mat-paginator>
 </div>

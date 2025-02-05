@@ -17,7 +17,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './side-register.component.html',
 })
 export class AppSideRegisterComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   // Define the registration form
   form = new FormGroup({
