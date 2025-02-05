@@ -29,25 +29,27 @@ export class AjoutPostComponent {
     this.postForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      categories: ['', Validators.required], // User can enter any category
+      categories: ['', Validators.required], 
     });
   }
 
   submitForm() {
     if (this.postForm.valid) {
+      const userId = this.tokenService.getUserId();
+      console.log("user id :",userId)
       const postData = {
         ...this.postForm.value,
         categories: Array.isArray(this.postForm.value.categories)
-        ? this.postForm.value.categories
-        : [this.postForm.value.categories], // 
+          ? this.postForm.value.categories
+          : [this.postForm.value.categories],
         createdAt: new Date(),
-        createdBy: 'user123', // Replace with actual user ID from auth
+        createdBy: userId,
       };
-
+  
       const token = this.tokenService.getToken();
       if (token) {
-        console.log(token)
-        this.syncvoteService.addPost(postData,token).subscribe(
+        console.log(token);
+        this.syncvoteService.addPost(postData, token).subscribe(
           (response: any) => {
             console.log('Post added successfully:', response);
           },
@@ -58,6 +60,8 @@ export class AjoutPostComponent {
       } else {
         console.error('No token found');
       }
+      console.log(postData)
     }
   }
+  
 }
