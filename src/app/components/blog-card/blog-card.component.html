@@ -5,7 +5,7 @@
         <img mat-card-image [src]="cardimg.imgSrc" alt="Post image" class="w-100" />
         <div class="card-overlay h-100 d-flex align-items-end justify-content-end">
           <span class="f-s-12 f-w-600 m-y-16 m-r-16 p-y-4 p-x-8 rounded-pill bg-white">
-            {{ cardimg.time }}
+            {{ cardimg.createdAt | date: 'dd/MM/yyyy' }}  <!-- Affiche la date formatée -->
           </span>
         </div>
       </div>
@@ -22,18 +22,20 @@
         <mat-card-title class="m-t-20 text-hover-primary cursor-pointer">
           <a routerLink="['/']" class="hover-text">{{ cardimg.title }}</a>
         </mat-card-title>
+
         <div class="d-flex align-items-center justify-content-center m-t-24">
-          <div class="d-flex align-items-center">
+          <div *ngIf="canEditOrDelete(cardimg)" class="d-flex align-items-center">
             <span (click)="onDelete(cardimg)" class="cursor-pointer">
-              <i-tabler name="eye" class="icon-18 m-r-4"></i-tabler> Delete
+              <i-tabler name="trash" class="icon-18 m-r-4"></i-tabler> Delete
             </span>
-            <span (click)="onUpdate(cardimg)" class="cursor-pointer">
-              <i-tabler name="message-2" class="icon-18 m-r-4"></i-tabler> Update
+            <span (click)="onUpdate(cardimg)" class="cursor-pointer" style="margin-left: 20px;">
+              <i-tabler name="edit" class="icon-18 m-r-4"></i-tabler> Update
             </span>
           </div>
+
           <span class="m-l-auto f-s-14 d-flex align-items-center">
             <i-tabler name="point" class="icon-14 m-r-4 d-flex"></i-tabler>
-            {{ cardimg.date }}
+            {{ cardimg.createdAt | date: 'dd/MM/yyyy' }}  <!-- Date format -->
           </span>
         </div>
       </mat-card-content>
