@@ -43,7 +43,8 @@ L'application inclut les optimisations suivantes :
 - **Optimisation des requêtes API** pour réduire les appels inutiles  <code>\src\app\services</code> 
 
 ## Gestion des erreurs
-L'application gère les erreurs globalement grâce à un intercepteur HTTP et des notifications utilisateur. 
+- LES " TRY CATCH "
+- L'application gère les erreurs globalement grâce à un intercepteur HTTP .
  <code>\src\app\interceptors</code> 
 
 ## Authentification et Autorisation
